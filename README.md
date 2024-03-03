@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 [Delivery icons created by dreamicons - Flaticon](https://www.flaticon.com/free-icons/delivery)
 
 # 첫 시작(setting)
@@ -1165,3 +1166,7 @@ rn73부터는 앱 실행을 위해 npm start 실행 후 i나 a를 눌러 아이�
 - loading, disabled 처리 모두 다 하기
 - 내 위치 앱 시작하고 권한 있을 때 미리 받아놓기
 - refreshtoken이 만료되면 어떻게?(현재는 무한 419뜸)
+=======
+# react-native-study
+react-native study
+>>>>>>> 504f8fbc04900a5c91b43ff12f15e389c648095b
