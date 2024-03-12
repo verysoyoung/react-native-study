@@ -4,8 +4,14 @@ import {
   createNativeStackNavigator,
   NativeStackScreenProps,
 } from '@react-navigation/native-stack';
-import {Pressable, Text, View} from 'react-native';
-import {useCallback} from 'react';
+import {
+  Pressable,
+  Text,
+  View,
+  StyleSheet,
+  TouchableHighlight,
+} from 'react-native';
+import {useCallback, useState} from 'react';
 
 type RootStackParamList = {
   Home: undefined;
@@ -61,6 +67,8 @@ function DetailsScreen({navigation}: DetailsScreenProps) {
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 function App() {
+  const [isModal, setIsmodal] = useState(true);
+
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Home">
@@ -75,8 +83,61 @@ function App() {
           options={{title: 'Detail'}}
         />
       </Stack.Navigator>
+      {isModal && (
+        <Pressable onPress={() => setIsmodal(false)} style={styles.modal}>
+          <View style={styles.modalInner}>
+            <View style={{flex: 1, backgroundColor: 'lightblue'}}>
+              <Text>Hello</Text>
+            </View>
+            <View style={{flexDirection: 'row'}}>
+              <Pressable
+                style={{
+                  flex: 1,
+                  alignItems: 'center',
+                  backgroundColor: 'blue',
+                  paddingVertical: 10,
+                  paddingHorizontal: 20,
+                  marginRight: 10,
+                }}>
+                <Text>네</Text>
+              </Pressable>
+              <Pressable
+                style={{
+                  flex: 1,
+                  alignItems: 'center',
+                  backgroundColor: 'grey',
+                  paddingVertical: 10,
+                  paddingHorizontal: 20,
+                }}>
+                <Text>아니오</Text>
+              </Pressable>
+            </View>
+          </View>
+        </Pressable>
+      )}
     </NavigationContainer>
   );
 }
+
+const styles = StyleSheet.create({
+  modal: {
+    position: 'absolute',
+    backgroundColor: 'rgba(0,0,0,0.5)',
+    top: 0,
+    bottom: 0,
+    right: 0,
+    left: 0,
+  },
+  modalInner: {
+    position: 'absolute',
+    backgroundColor: 'white',
+    top: 20,
+    bottom: 20,
+    right: 20,
+    left: 20,
+    borderRadius: 20,
+    padding: 20,
+  },
+});
 
 export default App;
